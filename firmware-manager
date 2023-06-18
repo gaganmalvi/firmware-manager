@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ "$XDG_SESSION_TYPE" == "wayland" ] && command -v xhost; then
+  xhost +si:localuser:root
+fi
+
+pkexec "/usr/bin/com.system76.FirmwareManager"
+
+if [ "$XDG_SESSION_TYPE" == "wayland" ] && command -v xhost; then
+  xhost -si:localuser:root
+fi
