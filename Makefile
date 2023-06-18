@@ -18,7 +18,7 @@ ifeq ($(DEBUG),0)
 	ARGS += --release
 endif
 
-
+FIRMWARE_MANAGER_SCRIPT = firmware-manager
 APPID = com.system76.FirmwareManager
 NOTIFY_APPID = $(APPID).Notify
 NOTIFY_SERVICE = $(NOTIFY_APPID).service
@@ -82,7 +82,7 @@ desktop $(DESKTOP): vendor-extract
 		--keywords lvfs \
 		--categories System \
 		--categories GTK \
-		--binary $(APPID) \
+		--binary $(FIRMWARE_MANAGER_SCRIPT) \
 		--prefix $(prefix) \
 		--startup-notify
 
