@@ -114,9 +114,11 @@ $(PKGCONFIG): tools/src/pkgconfig.rs
 install: install-bin install-ffi install-notify install-icons
 
 install-bin:
+	install -Dm0755 "$(FIRMWARE_MANAGER_SCRIPT)" "$(DESTDIR)$(bindir)/$(FIRMWARE_MANAGER_SCRIPT)"
 	install -Dm0755 "$(GTKBINARY)"  "$(DESTDIR)$(bindir)/$(APPID)"
 	install -Dm0644 "$(DESKTOP)" "$(DESTDIR)$(prefix)/share/applications/$(APPID).desktop"
 	install -Dm0644 "assets/$(APPID).appdata.xml" "$(DESTDIR)$(sharedir)/metainfo/$(APPID).appdata.xml"
+	install -Dm0644 "$(APPID).policy" "$(DESTDIR)$(sharedir)/polkit-1/actions/$(APPID).policy"
 
 install-ffi:
 	install -Dm0644 "$(HEADER)"    "$(DESTDIR)$(includedir)/$(PACKAGE).h"
